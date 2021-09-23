@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list student</title>
+    <style>
+        .odd {
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <h3>{{ msg }}</h3>
+    <ul>
+        {% for stu in students %}
+
+            <li >{{ stu.id }} {{ stu.name }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
