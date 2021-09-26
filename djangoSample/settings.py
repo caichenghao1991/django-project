@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'django-insecure-0pj&8wfmq3#7v^iv5dg3muvo9983_mt1$t3zdu&%24c$3-tk%6
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']  # bind current web server to any ip address
-
 
 # Application definition
 
@@ -70,10 +68,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'djangoSample.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-#'ENGINE': 'django.db.backends.sqlite3',
+# 'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #        # for sqlite lock timeout
 #        'OPTIONS': {
@@ -84,13 +81,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'company',
-        'USER':'cai',
-        'PASSWORD':'123456',
-        'HOST':'127.0.0.1',
-        'PORT':'3306',
+        'USER': 'cai',
+        'PASSWORD': '123456',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -110,7 +106,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -124,11 +119,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # model use upload file/image url and dir
 MEDIA_URL = '/media/'

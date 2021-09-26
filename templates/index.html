@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>index</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ block.super }} Houses
+{% endblock %}
+{% block content %}
     <h3>{{ msg }}</h3>
     <ul>
         {% for house in houses %}
             <li>{{ house.id }} {{ house.name }}</li>
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}
+
+

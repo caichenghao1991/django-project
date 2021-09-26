@@ -26,9 +26,11 @@ def index(request: HttpRequest):
               {'id': 3, 'name': "Ravenclaw"}, {'id': 4, 'name': "Slytherin"}]
     # return HttpResponse('<h1>hi, Django</h1>'.encode('utf-8'))
     return render(request, 'index.html', {'houses': houses, 'msg': 'Hogwarts houses'})
-        # request, template name, context(dict)
+    # request, template name, context(dict)
+
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', index),
-    path('student/', include('mainapp.urls'))
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  path('admin/', admin.site.urls),
+                  path('', index),
+                  path('student/', include('mainapp.urls'))
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

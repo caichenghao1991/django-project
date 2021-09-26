@@ -3,8 +3,9 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from django.template import loader
 
-from mainapp.models import Student, House
+from mainapp.models import Student, House, Course
 
 
 def student_list(request):
@@ -34,6 +35,13 @@ def student_list2(request):  # http://127.0.0.1:8000/student/list   student from
     # return render(request, 'student/list.html', {'students': data, 'msg': 'Hogwarts student'})
     return render(request, 'student/list.html', locals())
 
+def student_list3(request):  # http://127.0.0.1:8000/student/list   student from main urls, list from mainapp urls
+    students = Student.objects.all()
+    msg = 'Hogwarts student'
+    template = loader.get_template('student/list.html')  # load template
+    #html = template.render(context={'msg': 'Hogwarts student', 'students': students})   # render template
+    html = loader.render_to_string("student/list.html", locals(), request)  #  request optional
+    return HttpResponse(html, status=200)
 
 def delete_student(request):  # http://127.0.0.1:8000/student/delete?id=15
     id = request.GET.get('id', None)
@@ -55,32 +63,38 @@ def delete_student(request):  # http://127.0.0.1:8000/student/delete?id=15
 
 def find_student_house(request):  # http://127.0.0.1:8000/student/find_student_house?id=1
     house = request.GET.get('id', None)
-    #Student.objects.filter(id=3).update(age=F('age') -1)  # update(age=12)
-    #print(Student.objects.filter(Q(house=1) | Q(house=2)).all())
-    #print(Student.objects.filter(Q(house=1) | Q(house=2)).values())
-    #print([s for s in Student.objects.raw('select id, name,house_id from t_student where age<%s',(11,))])
-        # QuerySet.raw() return RawQuerySet  must include id
-    #print(Student.objects.extra(where=['house_id=%s'],params=[1]))
-    #print(Student.objects.extra(where=['house_id=%s or name like %s','age=%s'], params=[1, 'Mal%', 11]))
+    # Student.objects.filter(id=3).update(age=F('age') -1)  # update(age=12)
+    # print(Student.objects.filter(Q(house=1) | Q(house=2)).all())
+    # print(Student.objects.filter(Q(house=1) | Q(house=2)).values())
+    # print([s for s in Student.objects.raw('select id, name,house_id from t_student where age<%s',(11,))])
+    # QuerySet.raw() return RawQuerySet  must include id
+    # print(Student.objects.extra(where=['house_id=%s'],params=[1]))
+    # print(Student.objects.extra(where=['house_id=%s or name like %s','age=%s'], params=[1, 'Mal%', 11]))
     from django.db import connection
     with connection.cursor() as c:
         c.execute('select * from t_student')
-        print([s for s in c.fetchall()])
+        #print([s for s in c.fetchall()])
 
-    print(Student.objects.get(pk=6).house.name)
-    print(House.objects.get(pk=1).student_set.all())
+    #print(Student.objects.get(pk=6).house.name)
+    #print(House.objects.get(pk=1).student_set.all())
+    #Student.objects.get(pk=5).courses.add(Course.objects.get(pk=2))
+    #print(Student.objects.get(pk=5).courses.all())
+    #Course.objects.get(pk=2).students.remove(Student.objects.get(pk=5))
+    #print(Course.objects.get(pk=2).students.all())
+
+
+
 
     if id:
         try:
             house = int(house)
-            students = Student.objects.filter(house__exact=house).order_by('-id', 'age')
-
-
-
-            #if students.objects.get(3).first().intro=='':
+            students = Student.objects.filter(house__exact=1).order_by('-id', 'age')
+            print(students)
+            # if students.objects.get(3).first().intro=='':
             #    students.objects.get(3).first()
-
-            return render(request, 'student/list.html', locals())
+            #print([s.name for s in students])
+            request.session['students'] = ([s.name for s in students])
+            return render(request, 'list.html', locals())  # from app level templates
         except:
             return HttpResponse('house id %s not exist' % id)
     else:

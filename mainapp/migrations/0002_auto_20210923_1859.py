@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('mainapp', '0001_initial'),
     ]
@@ -23,7 +22,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='student',
             name='logo',
-            field=models.ImageField(blank=True, height_field='logo_height', upload_to='storage', width_field='logo_width'),
+            field=models.ImageField(blank=True, height_field='logo_height', upload_to='storage',
+                                    width_field='logo_width'),
         ),
         migrations.AddField(
             model_name='student',
