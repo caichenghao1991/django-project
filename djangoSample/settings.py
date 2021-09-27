@@ -71,7 +71,7 @@ WSGI_APPLICATION = 'djangoSample.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # 'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',  # table name
 #        # for sqlite lock timeout
 #        'OPTIONS': {
 #            'timeout': 5,
@@ -85,6 +85,7 @@ DATABASES = {
         'PASSWORD': '123456',
         'HOST': '127.0.0.1',
         'PORT': '3306',
+        'CHARSET': 'utf8'
     }
 }
 
@@ -123,7 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),'/var/www/static/',]
 
 # model use upload file/image url and dir
 MEDIA_URL = '/media/'

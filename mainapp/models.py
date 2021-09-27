@@ -1,6 +1,9 @@
+import re
+
 import time
 from datetime import datetime
 
+from django.core.exceptions import ValidationError
 from django.db import models
 
 
@@ -15,10 +18,16 @@ class House(models.Model):
         db_table = 't_house'
         verbose_name = 'house'  # name inside admin page
 
+class StudentValidator:
+    @classmethod
+    def valid_age(cls, value):
+        if not re.match(r'\d{2}', str(value)):  # int must convert to string
+            raise ValidationError('Incorrect age for Hogwarts')
+        return True
 
 class Student(models.Model):
     name = models.CharField(max_length=50, verbose_name='Student Name')  # verbose name for admin page
-    age = models.IntegerField(default=0, blank=True, null=True)
+    age = models.IntegerField(default=0, blank=True, null=True, validators=[StudentValidator.valid_age])
     # admin page(blank=True) / database (null=True) add studentcan be empty
     # house = models.IntegerField(default=0, blank=True, null=True)
     house = models.ForeignKey(House, on_delete=models.SET_NULL, null=True, db_index=True)  # CASCADE create index
@@ -27,7 +36,7 @@ class Student(models.Model):
     # save 0/1 column name sex, but display male/female in admin page
     join_date = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Join Date')  # add create time as now
 
-    logo = models.ImageField(upload_to='storage', width_field='logo_width', height_field='logo_height', blank=True)
+    logo = models.ImageField(upload_to='images', width_field='logo_width', height_field='logo_height', blank=True)
     logo_width = models.IntegerField(null=True, blank=True)
     logo_height = models.IntegerField(null=True, blank=True)
     intro = models.TextField(blank=True, null=True)
@@ -76,3 +85,4 @@ class Course(models.Model):
         db_table = 't_course'
         verbose_name = 'course'  # name inside admin page
         verbose_name_plural = 'course'  # set plural name (default add s)
+

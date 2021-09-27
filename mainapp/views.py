@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.template import loader
+from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 from mainapp.models import Student, House, Course
 
@@ -15,13 +17,14 @@ def student_list(request):
     # return render(request, 'student/list.html', {'students': data, 'msg': 'Hogwarts student'})
     return render(request, 'student/list.html', locals())
 
-
-def add_student(request):  # http://127.0.0.1:8000/student/add?name=Luna%20Lovegood&age=9&house=0
+@csrf_exempt
+def add_student(request):  # http://127.0.0.1:8000/student/add?name=Luna%20Lovegood&age=9&house=1
 
     student = Student()
+    #print(request.GET.code)
     student.name = request.GET.get('name', None)  # default value
     student.age = request.GET.get('age', 0)
-    student.house = request.GET.get('house', 0)
+    student.house = House.objects.get(pk=request.GET.get('house', 0))
     if not all((student.age, student.name, student.house)):  # check valid input
         return HttpResponse('<h3>bad request parameter</h3>', status=400)
 
@@ -40,7 +43,7 @@ def student_list3(request):  # http://127.0.0.1:8000/student/list   student from
     msg = 'Hogwarts student'
     template = loader.get_template('student/list.html')  # load template
     #html = template.render(context={'msg': 'Hogwarts student', 'students': students})   # render template
-    html = loader.render_to_string("student/list.html", locals(), request)  #  request optional
+    html = loader.render_to_string("list.html", locals(), request)  #  request optional,  use app level template
     return HttpResponse(html, status=200)
 
 def delete_student(request):  # http://127.0.0.1:8000/student/delete?id=15
@@ -81,6 +84,7 @@ def find_student_house(request):  # http://127.0.0.1:8000/student/find_student_h
     #print(Student.objects.get(pk=5).courses.all())
     #Course.objects.get(pk=2).students.remove(Student.objects.get(pk=5))
     #print(Course.objects.get(pk=2).students.all())
+    # print(request.path) # /student/find_student_house
 
 
 
@@ -99,3 +103,13 @@ def find_student_house(request):  # http://127.0.0.1:8000/student/find_student_h
             return HttpResponse('house id %s not exist' % id)
     else:
         return HttpResponse('<h3>bad request parameter</h3>', status=400)
+
+def detail(request, id):  # retrieve url path parameter (not request.get)
+    if request.method == 'GET':
+        student = Student.objects.get(pk=id)
+        msg = 'Welcome %s' % student.name
+        url = reverse('hogwarts:info', args=(id,))
+        host = request.get_host()
+        print(url)
+
+    return render(request, 'detail.html', locals())

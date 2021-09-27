@@ -22,7 +22,8 @@
         {% else %}
         {% endif %}
 
-        <li class="{% cycle 'even' '' %}">{{ stu.id }} {{ stu.name }} {{ stu.house.name }}</li>
+        <li class="{% cycle 'even' '' %}">{{ stu.id }} {{ stu.name }} {{ stu.house.name }}
+            <a href="{% url 'hogwarts:info' stu.id %}">More info</a></li>
     {% endfor %}
 
 </ul>

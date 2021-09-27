@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ block.super }} Student
+{% endblock %}
+{% block content %}
+    <h3>{{ msg }}</h3>
+    <p>{{ student.house }}</p>
+    <p>{{ student.age }}</p>
+    {% for c in student.courses.all %}
+        <li>{{ c.id }} {{ c.name }} {{ c.grade }}</li>
+    {% endfor %}
+    <p>{{ student.join_date }}</p>
+
+    <p>{{ student.intro }}</p>
+    <input type="hidden" id='logo' value={{ student.logo }}></input>
+    <input type="hidden" id='host' value={{ host }}></input>
+{% endblock %}
+{% block js%}
+<script>
+
+    var host = document.getElementById('host').value
+    var src = host+'/media/'+document.querySelector('input[type="hidden"]').value
+    $('img')[0].src = src
+
+
+</script>
+
+{% endblock %}

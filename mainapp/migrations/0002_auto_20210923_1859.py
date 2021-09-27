@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='student',
             name='logo',
-            field=models.ImageField(blank=True, height_field='logo_height', upload_to='storage',
+            field=models.ImageField(blank=True, height_field='logo_height', upload_to='images',
                                     width_field='logo_width'),
         ),
         migrations.AddField(
