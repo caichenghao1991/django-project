@@ -36,7 +36,7 @@ class Student(models.Model):
     # save 0/1 column name sex, but display male/female in admin page
     join_date = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Join Date')  # add create time as now
 
-    logo = models.ImageField(upload_to='images', width_field='logo_width', height_field='logo_height', blank=True)
+    logo = models.ImageField(upload_to='storage', width_field='logo_width', height_field='logo_height', blank=True)
     logo_width = models.IntegerField(null=True, blank=True)
     logo_height = models.IntegerField(null=True, blank=True)
     intro = models.TextField(blank=True, null=True)

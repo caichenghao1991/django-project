@@ -27,10 +27,39 @@
     {% endfor %}
 
 </ul>
+<img src="/student/verification/" onclick="this.src='/student/verification/?t='+new Date()"/>
+
 
 {{ students.2.house.name}}
 {{ request.session.students.1 }}
+
+<table border="1">
+    <thread><th>ID</th><th>Name</th><th>Age</th><th>House</th></thread>
+    <tbody>
+        {% for stu in curr_page.object_list %}
+            <tr><td>{{ stu.id }}</td><td>{{ stu.name }}</td><td>{{ stu.age }}</td><td>{{ stu.house.name }}</td></tr>
+        {% empty %}
+            <tr><td colspan="">No data available</td></tr>
+        {% endfor %}
+  </tbody>
+</table>
+
+<a {% if curr_page.has_previous %} href="?page={{ curr_page.previous_page_number }}" {% endif %}>&lt;</a>
+{% for p in paginator.page_range %}
+    {% if curr_page.number == p %}
+        <a href="?page={{ p }}" style="color:red">{{ p }}</a>
+    {% else %}
+        <a href="?page={{ p }}">{{ p }}</a>
+    {% endif %}
+{% endfor %}
+<a {% if curr_page.has_next %} href="?page={{ curr_page.next_page_number }}" {% endif %}>&gt;</a>
+
+
+
+
 {% include 'base_js.html' %}
+
+
 </body>
 
 </html>
