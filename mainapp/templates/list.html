@@ -54,7 +54,7 @@
 {% endfor %}
 <a {% if curr_page.has_next %} href="?page={{ curr_page.next_page_number }}" {% endif %}>&gt;</a>
 
-
+<p>{{ lucky }} is the lucky one. </p>
 
 
 {% include 'base_js.html' %}

@@ -46,6 +46,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'middleware.check_login.CheckLoginMiddleWare',
+    'middleware.html_cache.CachePageMiddleware'
 ]
 
 ROOT_URLCONF = 'djangoSample.urls'
@@ -124,7 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),'/var/www/static/',]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), '/var/www/static/', ]
 
 # model use upload file/image url and dir
 MEDIA_URL = '/media/'
@@ -132,5 +134,100 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+LOGGING_DIR = os.path.join(BASE_DIR, 'log')
+LOGGING = {
+    'version': 1,  # must have logger version
+    'disable_existing_loggers': False,  # disable existing logger
+    'formatters': {  # declare logger formatter
+        'simple': {  # declare new formatter named simple
+            'format': '[%(asctime)s] %(module)s.%(funcName)s %(levelname)s : %(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S'
+        }
+    },
+    # handlers：用来定义具体处理日志的方式，可以定义多种，"default"就是默认方式，"console"就是打印到控制台方式。file是写入到文件的方式，注意使用的class不同
+    'handlers': {  # declare logging handler for different need (io, console output, email, default...)
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'include_html': True,
+        },
+        'default': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOGGING_DIR, 'run.log'),
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'simple',
+            # 'when': 'W0'  #every monday cut logger
+        },
+        # 'request_handler': {
+        #     'level': 'DEBUG',
+        #     'class': 'logging.handlers.RotatingFileHandler',
+        #     'filename': os.path.join(LOGGING_DIR, 'debug_request.log'),
+        #     'maxBytes': 1024*1024*5,
+        #     'backupCount': 5,
+        #     'formatter': 'standard',
+        # },
+        'file_handler': {
+            'class': 'logging.FileHandler',
+            'level': 'WARNING',
+            'formatter': 'simple',
+            'filename': os.path.join(LOGGING_DIR, 'file_io.log'),
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',  # use 'logging.StreamHandler' to output to console
+            'formatter': 'simple',
+        },
+    },
+    'loggers': {  # declare logger
+        'django': {
+            'handlers': ['console', 'default'],
+            'level': 'INFO',
+            'propagate': False,  # whether parsing to other logger  have a child django.request
+        },
+    },
+}
+CACHES = {
+    'default': {  # redis cache
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+        # "PASSWORD": "password",
+
+        'OPTIONS': {  #optional
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            'SOCKET_CONNECT_TIMEOUT': 10,
+            'SOCKET_TIMEOUT': 10,
+            'CONNECTION_POOL_KWARGS': {'max_connections': 100}
+        }
+    },
+    'file_cache': {  # save cache in file
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',  # must have
+        'LOCATION': os.path.join(BASE_DIR, 'cache'),  # must have
+        'TIMEOUT': '300',  # second
+        'KEY-PREFIX': 'cc',
+        'VERSION': '1',
+        'OPTIONS': {
+            'MAX_ENTRIES': '300',
+            'CULL_FREQUENCY': 3  # remove 3% cache if full
+        }
+    },
+    'html_cache': {  # save cache in memory
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'unique-snowflake'
+    },
+
+
+
+}
+
+# store session in redis
+#SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+#SESSION_COOKIE_NAME = 'SESSION_ID'
+#SESSION_COOKIE_PATH = '/'
+#SESSION_CACHE_ALIAS = 'default'
+#SESSION_COOKIE_AGE = 1209600
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

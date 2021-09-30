@@ -1,3 +1,4 @@
+import hashlib
 import re
 
 import time
@@ -27,6 +28,7 @@ class StudentValidator:
 
 class Student(models.Model):
     name = models.CharField(max_length=50, verbose_name='Student Name')  # verbose name for admin page
+    password = models.CharField(max_length=100, verbose_name='Password', null=True, blank=True)
     age = models.IntegerField(default=0, blank=True, null=True, validators=[StudentValidator.valid_age])
     # admin page(blank=True) / database (null=True) add studentcan be empty
     # house = models.IntegerField(default=0, blank=True, null=True)
@@ -55,6 +57,10 @@ class Student(models.Model):
 
     def __str__(self):  # add this so in the admin page, will show student name instead of object
         return self.name
+
+    def save(self, *args, **kwargs):
+        self.password = hashlib.sha224(self.password.encode('utf-8')).hexdigest()
+        super(Student, self).save(*args, **kwargs)
 
     '''
     # if use UUIDField as primary key 

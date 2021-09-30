@@ -13,8 +13,8 @@
     <p>{{ student.join_date }}</p>
     <a href="{% url 'hogwarts:img' path %}"/>picture</a>
     {% load static %}
-    <img src="/student/images/hp.jpg">
-    <img src="{% static pic_src %}">
+        <img src="/student/images/hp.jpg">
+        <img src="{% static pic_src %}">
 
     <p>{{ student.intro }}</p>
     <input type="hidden" id='logo' value={{ student.logo }}></input>

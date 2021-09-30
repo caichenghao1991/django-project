@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ block.super }} Login
+{% endblock %}
+{% block content %}
+ <form action="/student/login" method="post" >
+     {% csrf_token %}
+    <p>Student name: <input type="text" name="name" maxlength="30" size="30" required></p>
+    <p>Password: <input type="password" name="password" placeholder="Enter password" required></p>
+     <p><button>submit</button></p>
+ </form>
+<input type="button" value="Sign up"></p>
+{% endblock %}

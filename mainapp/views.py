@@ -1,3 +1,5 @@
+import hashlib
+import json
 import os
 import random
 import uuid
@@ -6,6 +8,7 @@ from io import BytesIO
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
+from django.core.cache import cache
 from django.core.paginator import Paginator
 from django.db.models import F, Q
 from django.http import HttpResponse
@@ -14,12 +17,14 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.template import loader
 from django.urls import reverse
+from django.views import View
+from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
 
 from mainapp.models import Student, House, Course
 from util.helper import random_string
 
-
+cache.add('a','a')
 def student_list(request):
     students = [{'id': 1, 'name': "Harry Potter"}, {'id': 2, 'name': "Ronald Weasley"},
                 {'id': 3, 'name': "Hermione Granger"}]
@@ -28,6 +33,7 @@ def student_list(request):
     return render(request, 'student/list.html', locals())
 
 @csrf_exempt
+
 def add_student(request):  # http://127.0.0.1:8000/student/add?name=Luna%20Lovegood&age=9&house=1
 
     student = Student()
@@ -41,20 +47,20 @@ def add_student(request):  # http://127.0.0.1:8000/student/add?name=Luna%20Loveg
     student.save()
     return redirect('/student/list')
 
-
 def student_list2(request):  # http://127.0.0.1:8000/student/list   student from main urls, list from mainapp urls
     students = Student.objects.all()
     msg = 'Hogwarts student'
     # return render(request, 'student/list.html', {'students': data, 'msg': 'Hogwarts student'})
     return render(request, 'student/list.html', locals())
 
+@cache_page(timeout=5, cache='html_cache',key_prefix='cc')
 def student_list3(request):  # http://127.0.0.1:8000/student/list   student from main urls, list from mainapp urls
     page=request.GET.get('page',1)
     students = Student.objects.all()
     msg = 'Hogwarts student'
     paginator = Paginator(students, 2)
     curr_page = paginator.page(page)
-
+    lucky = Student.objects.get(pk=random.randint(1, students.count())).name
 
     #template = loader.get_template('student/list.html')  # load template
     #html = template.render(context={'msg': 'Hogwarts student', 'students': students})   # render template
@@ -105,7 +111,7 @@ def find_student_house(request):  # http://127.0.0.1:8000/student/find_student_h
         try:
             house = int(house)
             students = Student.objects.filter(house__exact=1).order_by('-id', 'age')
-            print(students)
+            #print(students)
             # if students.objects.get(3).first().intro=='':
             #    students.objects.get(3).first()
             #print([s.name for s in students])
@@ -119,15 +125,11 @@ def find_student_house(request):  # http://127.0.0.1:8000/student/find_student_h
 def detail(request, id):  # retrieve url path parameter (not request.get)
     if request.method == 'GET':
         student = Student.objects.get(pk=id)
-        msg = 'Welcome %s' % student.name
         url = reverse('hogwarts:info', args=(id,))
         host = request.get_host()
         path = student.logo.url.split('/')[-1]
         pic_src = '../media/storage/'+path
-        print(url)
-
-
-
+        #print(url)
     return render(request, 'detail.html', locals())
 
 def images(request, name):
@@ -160,3 +162,58 @@ def verification_code(request):
     buffer = BytesIO()
     img.save(buffer, 'png')  # write img
     return HttpResponse(content=buffer.getvalue(), content_type='image/png')
+
+
+class LoginView(View):
+    def get(self, request):
+        return render(request, 'login.html', locals())
+    def post(self,request):
+        stu_name = request.POST.get('name')
+        pwd = request.POST.get('password')
+        if stu_name and pwd:
+            pwd = hashlib.sha224(pwd.encode('utf-8')).hexdigest()
+            student = Student.objects.filter(name=stu_name).first()
+            #print(student)
+            if student and student.password == pwd:
+                request.session['student'] = json.dumps({'user': student.name, 'id': student.id})
+                request.session.set_expiry(100)  # 100 seconds
+                #print(request.session.get('student'))
+                #url =reverse('hogwarts:info', args=(student.id,))
+                url = '/student/detail2'
+                #resp = render(request, 'detail.html', locals())
+                resp = redirect(url, locals())
+                #request.session.clear()
+                #if not request.COOKIES.get('token'):
+                #    resp.set_cookie(key='token', value=uuid.uuid4().hex)
+                if not cache.has_key('student'):
+                    cache.add('student', json.dumps({'user': student.name, 'id': student.id}), timeout=100)
+
+                #print(cache.get('student'))
+
+                return resp
+            else:
+                return redirect('/student/login')
+        else:
+            return redirect('/student/login')
+    def put(self,request):
+        return HttpResponse('Put Request')
+    def delete(self,request):
+        return HttpResponse('Delete Request')
+
+def detail2(request):  # retrieve url path parameter (not request.get)
+    info = request.session.get('student')  # {"user": "Harry Potter", "id": 1}
+    info2 = request.headers
+    if info:
+        info = eval(info)
+        id = info.get('id')
+        student = Student.objects.get(pk=id)
+        msg = 'Welcome %s' % student.name
+        url = reverse('hogwarts:info', args=(id,))
+        host = request.get_host()
+        path = student.logo.url.split('/')[-1]
+        pic_src = '../media/storage/'+path
+
+        return render(request, 'detail.html', locals())
+
+    else:
+        return redirect('/student/list')
