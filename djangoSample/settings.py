@@ -35,7 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mainapp'
+    'mainapp',
+    'celery',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -223,11 +225,30 @@ CACHES = {
 }
 
 # store session in redis
-#SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-#SESSION_COOKIE_NAME = 'SESSION_ID'
-#SESSION_COOKIE_PATH = '/'
-#SESSION_CACHE_ALIAS = 'default'
-#SESSION_COOKIE_AGE = 1209600
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_COOKIE_NAME = 'SESSION_ID'
+SESSION_COOKIE_PATH = '/'
+SESSION_CACHE_ALIAS = 'default'
+SESSION_COOKIE_AGE = 1209600
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+BROKER_URL = 'redis://127.0.0.1:6379/2'
+CELERY_TIME_ZONE = 'America/Chicago'
+CELERY_IMPORTS = ('mainapp.tasks',)   # manual import task not needed if app.autodiscover_tasks()
+# from celery.schedules import timedelta, crontab   # for schedule tasks
+CELERY_RESULT_BACKEND ='django-db'   # 'redis://127.0.0.1:6379/3'
+CELERY_CACHE_BACKEND = 'default'  # optional
+CELERY_TASK_SERIALIZER = 'json'  # task serialize and deserialize
+CELERY_RESULT_SERIALIZER = 'json'
+
+# CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
+# from celery.schedules import crontab
+# CELERYBEAT_SCHEDULE = {
+#     "schedule_my_task": {
+#         "task": "mainapp.tasks.hello_celery",
+#         "schedule": crontab(minute="01", hour="15"),  # default number, in second
+#         "args": (2,3)
+#     }
+# }

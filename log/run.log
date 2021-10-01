@@ -597,3 +597,653 @@ KeyError: 'request.path'
 [2021-09-30 00:21:58] basehttp.log_message INFO : "GET / HTTP/1.1" 200 475
 [2021-09-30 00:22:04] autoreload.trigger_reload INFO : D:\django-project\djangoSample\middleware\html_cache.py changed, reloading.
 [2021-09-30 00:22:06] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 15:37:58] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 15:39:17] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\__init__.py changed, reloading.
+[2021-09-30 15:39:18] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 15:39:30] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 15:39:30] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 302 0
+[2021-09-30 15:39:30] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 15:39:30] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 15:39:30] basehttp.log_message INFO : "GET /static/js/jquery-3.3.1.min.js HTTP/1.1" 200 86927
+[2021-09-30 15:39:31] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/favicon.ico
+[2021-09-30 15:39:31] basehttp.log_message INFO : "GET /favicon.ico HTTP/1.1" 302 0
+[2021-09-30 15:39:31] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 15:39:31] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 15:39:32] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 15:39:32] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-09-30 15:39:32] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-09-30 15:39:32] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-09-30 15:39:32] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 15:39:32] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 15:39:32] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 15:39:32] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-09-30 15:39:32] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 15:39:33] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/favicon.ico
+[2021-09-30 15:39:33] log.log_response WARNING : Not Found: /favicon.ico
+[2021-09-30 15:39:33] basehttp.log_message WARNING : "GET /favicon.ico HTTP/1.1" 404 2450
+[2021-09-30 15:39:36] basehttp.log_message INFO : "GET /admin HTTP/1.1" 301 0
+[2021-09-30 15:39:36] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/
+[2021-09-30 15:39:36] basehttp.log_message INFO : "GET /admin/ HTTP/1.1" 302 0
+[2021-09-30 15:39:36] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/login/?next=/admin/
+[2021-09-30 15:39:36] basehttp.log_message INFO : "GET /admin/login/?next=/admin/ HTTP/1.1" 200 2214
+[2021-09-30 15:39:36] basehttp.log_message INFO : "GET /static/admin/css/base.css HTTP/1.1" 200 19513
+[2021-09-30 15:39:36] basehttp.log_message INFO : "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2271
+[2021-09-30 15:39:36] basehttp.log_message INFO : "GET /static/admin/css/login.css HTTP/1.1" 200 939
+[2021-09-30 15:39:36] basehttp.log_message INFO : "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 1360
+[2021-09-30 15:39:36] basehttp.log_message INFO : "GET /static/admin/css/responsive.css HTTP/1.1" 200 18545
+[2021-09-30 15:39:36] basehttp.log_message INFO : "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+[2021-09-30 15:39:36] basehttp.log_message INFO : "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 85876
+[2021-09-30 15:39:36] basehttp.log_message INFO : "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 85692
+[2021-09-30 15:39:39] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/login/?next=/admin/
+[2021-09-30 15:39:39] basehttp.log_message INFO : "POST /admin/login/?next=/admin/ HTTP/1.1" 200 2382
+[2021-09-30 15:39:43] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/login/?next=/admin/
+[2021-09-30 15:39:43] basehttp.log_message INFO : "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2021-09-30 15:39:43] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/
+[2021-09-30 15:39:43] basehttp.log_message INFO : "GET /admin/ HTTP/1.1" 200 7646
+[2021-09-30 15:39:43] basehttp.log_message INFO : "GET /static/admin/css/dashboard.css HTTP/1.1" 200 380
+[2021-09-30 15:39:43] basehttp.log_message INFO : "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+[2021-09-30 15:39:43] basehttp.log_message INFO : "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+[2021-09-30 15:39:43] basehttp.log_message INFO : "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+[2021-09-30 15:39:51] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/add/
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /admin/mainapp/student/add/ HTTP/1.1" 200 10497
+[2021-09-30 15:39:52] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/jsi18n/
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /static/admin/css/forms.css HTTP/1.1" 200 8804
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /static/admin/js/core.js HTTP/1.1" 200 5698
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 5984
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 287630
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /static/admin/js/actions.js HTTP/1.1" 200 7664
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /static/admin/js/urlify.js HTTP/1.1" 200 7902
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /static/admin/css/widgets.css HTTP/1.1" 200 11097
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 492
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 232381
+[2021-09-30 15:39:52] basehttp.log_message INFO : "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 86184
+[2021-09-30 15:40:07] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/add/
+[2021-09-30 15:40:07] basehttp.log_message INFO : "POST /admin/mainapp/student/add/ HTTP/1.1" 302 0
+[2021-09-30 15:40:07] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/
+[2021-09-30 15:40:07] basehttp.log_message INFO : "GET /admin/mainapp/student/ HTTP/1.1" 200 14249
+[2021-09-30 15:40:07] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/jsi18n/
+[2021-09-30 15:40:07] basehttp.log_message INFO : "GET /static/admin/css/changelists.css HTTP/1.1" 200 6874
+[2021-09-30 15:40:07] basehttp.log_message INFO : "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[2021-09-30 15:40:07] basehttp.log_message INFO : "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+[2021-09-30 15:40:08] basehttp.log_message INFO : "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+[2021-09-30 15:40:08] basehttp.log_message INFO : "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+[2021-09-30 15:40:08] basehttp.log_message INFO : "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+[2021-09-30 15:40:19] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/12/change/
+[2021-09-30 15:40:19] basehttp.log_message INFO : "GET /admin/mainapp/student/12/change/ HTTP/1.1" 200 10805
+[2021-09-30 15:40:19] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/jsi18n/
+[2021-09-30 15:40:19] basehttp.log_message INFO : "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[2021-09-30 15:40:23] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/12/delete/
+[2021-09-30 15:40:23] basehttp.log_message INFO : "GET /admin/mainapp/student/12/delete/ HTTP/1.1" 200 5486
+[2021-09-30 15:40:23] basehttp.log_message INFO : "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+[2021-09-30 15:40:24] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/12/delete/
+[2021-09-30 15:40:24] basehttp.log_message INFO : "POST /admin/mainapp/student/12/delete/ HTTP/1.1" 302 0
+[2021-09-30 15:40:24] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/
+[2021-09-30 15:40:24] basehttp.log_message INFO : "GET /admin/mainapp/student/ HTTP/1.1" 200 13741
+[2021-09-30 15:40:24] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/jsi18n/
+[2021-09-30 15:40:24] basehttp.log_message INFO : "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[2021-09-30 15:43:33] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\__init__.py changed, reloading.
+[2021-09-30 15:43:34] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 15:44:05] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\__init__.py changed, reloading.
+[2021-09-30 15:44:06] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 15:44:57] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\__init__.py changed, reloading.
+[2021-09-30 15:44:58] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 15:45:14] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\__init__.py changed, reloading.
+[2021-09-30 15:45:15] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 15:45:32] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\__init__.py changed, reloading.
+[2021-09-30 15:45:33] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 15:46:12] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\__init__.py changed, reloading.
+[2021-09-30 15:46:13] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 15:46:36] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\__init__.py changed, reloading.
+[2021-09-30 15:46:38] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 15:46:50] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\__init__.py changed, reloading.
+[2021-09-30 15:46:52] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 15:47:17] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\__init__.py changed, reloading.
+[2021-09-30 15:47:18] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 15:47:23] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/add/
+[2021-09-30 15:47:23] basehttp.log_message INFO : "GET /admin/mainapp/student/add/ HTTP/1.1" 302 0
+[2021-09-30 15:47:23] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/login/?next=/admin/mainapp/student/add/
+[2021-09-30 15:47:23] basehttp.log_message INFO : "GET /admin/login/?next=/admin/mainapp/student/add/ HTTP/1.1" 200 2254
+[2021-09-30 15:47:25] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/login/?next=/admin/mainapp/student/add/
+[2021-09-30 15:47:25] basehttp.log_message INFO : "POST /admin/login/?next=/admin/mainapp/student/add/ HTTP/1.1" 302 0
+[2021-09-30 15:47:25] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/add/
+[2021-09-30 15:47:25] basehttp.log_message INFO : "GET /admin/mainapp/student/add/ HTTP/1.1" 200 10497
+[2021-09-30 15:47:25] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/jsi18n/
+[2021-09-30 15:47:25] basehttp.log_message INFO : "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[2021-09-30 15:47:42] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/add/
+[2021-09-30 15:47:42] basehttp.log_message INFO : "POST /admin/mainapp/student/add/ HTTP/1.1" 200 10670
+[2021-09-30 15:47:42] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/jsi18n/
+[2021-09-30 15:47:42] basehttp.log_message INFO : "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[2021-09-30 15:47:49] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/add/
+[2021-09-30 15:47:49] basehttp.log_message INFO : "POST /admin/mainapp/student/add/ HTTP/1.1" 302 0
+[2021-09-30 15:47:49] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/
+[2021-09-30 15:47:50] basehttp.log_message INFO : "GET /admin/mainapp/student/ HTTP/1.1" 200 14249
+[2021-09-30 15:47:50] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/jsi18n/
+[2021-09-30 15:47:50] basehttp.log_message INFO : "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[2021-09-30 15:47:58] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/13/change/
+[2021-09-30 15:47:58] basehttp.log_message INFO : "GET /admin/mainapp/student/13/change/ HTTP/1.1" 200 10805
+[2021-09-30 15:47:58] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/jsi18n/
+[2021-09-30 15:47:58] basehttp.log_message INFO : "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[2021-09-30 15:48:00] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/13/delete/
+[2021-09-30 15:48:00] basehttp.log_message INFO : "GET /admin/mainapp/student/13/delete/ HTTP/1.1" 200 5486
+[2021-09-30 15:48:01] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/13/delete/
+[2021-09-30 15:48:01] basehttp.log_message INFO : "POST /admin/mainapp/student/13/delete/ HTTP/1.1" 302 0
+[2021-09-30 15:48:01] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/mainapp/student/
+[2021-09-30 15:48:01] basehttp.log_message INFO : "GET /admin/mainapp/student/ HTTP/1.1" 200 13741
+[2021-09-30 15:48:01] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/admin/jsi18n/
+[2021-09-30 15:48:01] basehttp.log_message INFO : "GET /admin/jsi18n/ HTTP/1.1" 200 3195
+[2021-09-30 15:49:46] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\__init__.py changed, reloading.
+[2021-09-30 15:49:48] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 15:58:03] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 15:58:04] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 15:58:04] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 15:58:08] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 15:58:08] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-09-30 15:58:08] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-09-30 15:58:08] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-09-30 15:58:08] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 15:58:08] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 15:58:08] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 15:58:08] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-09-30 15:58:08] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 20:15:10] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:15:22] basehttp.log_message INFO : "GET /student/list HTTP/1.1" 301 0
+[2021-09-30 20:15:23] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:15:23] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 302 0
+[2021-09-30 20:15:23] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 20:15:23] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 20:15:26] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 20:15:26] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-09-30 20:15:26] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-09-30 20:15:26] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-09-30 20:15:26] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:15:26] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:15:26] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:15:26] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-09-30 20:15:26] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 20:15:29] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:15:29] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2024
+[2021-09-30 20:15:29] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 20:15:29] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3435
+[2021-09-30 20:16:09] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\tasks.py changed, reloading.
+[2021-09-30 20:16:11] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:16:28] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:16:31] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:16:33] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2026
+[2021-09-30 20:16:34] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 20:16:34] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3235
+[2021-09-30 20:19:11] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 20:19:13] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:19:28] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:19:30] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:19:30] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 302 0
+[2021-09-30 20:19:30] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 20:19:30] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 20:19:34] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 20:19:34] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-09-30 20:19:34] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-09-30 20:19:34] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-09-30 20:19:34] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:19:34] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:19:34] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 20:19:34] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:19:34] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-09-30 20:19:38] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:19:40] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2028
+[2021-09-30 20:19:41] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 20:19:41] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:19:41] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2028
+[2021-09-30 20:19:41] basehttp.handle_error INFO : - Broken pipe from ('127.0.0.1', 7791)
+
+[2021-09-30 20:19:41] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 20:19:41] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 2912
+[2021-09-30 20:22:09] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 20:22:11] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:22:23] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:22:35] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 20:22:37] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:22:53] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 20:22:55] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:23:07] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 20:23:08] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:23:27] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:23:34] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:23:34] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 302 0
+[2021-09-30 20:23:34] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 20:23:34] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 20:23:35] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 20:23:35] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-09-30 20:23:35] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-09-30 20:23:36] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-09-30 20:23:36] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:23:36] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:23:36] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:23:36] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-09-30 20:23:36] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 20:23:43] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:23:44] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 74
+[2021-09-30 20:24:01] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 20:24:03] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:24:06] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 20:24:08] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:24:14] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:24:17] basehttp.handle_error INFO : - Broken pipe from ('127.0.0.1', 11142)
+
+[2021-09-30 20:24:18] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/images/hp.jpg
+[2021-09-30 20:24:18] basehttp.log_message INFO : "GET /student/images/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 20:24:23] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:24:26] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2026
+[2021-09-30 20:24:26] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 20:24:26] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3508
+[2021-09-30 20:27:33] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:27:41] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:27:41] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 302 0
+[2021-09-30 20:27:41] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 20:27:41] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 20:27:43] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 20:27:43] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-09-30 20:27:43] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-09-30 20:27:43] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-09-30 20:27:43] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:27:43] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:27:43] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 20:27:43] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:27:43] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-09-30 20:27:56] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:27:59] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2026
+[2021-09-30 20:28:00] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 20:28:00] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3038
+[2021-09-30 20:33:44] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\tasks.py changed, reloading.
+[2021-09-30 20:33:46] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:33:54] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\tasks.py changed, reloading.
+[2021-09-30 20:33:56] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:34:25] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 20:34:27] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:34:48] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:34:50] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:34:50] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 302 0
+[2021-09-30 20:34:50] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 20:34:50] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 20:34:51] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 20:34:51] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-09-30 20:34:51] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-09-30 20:34:51] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-09-30 20:34:51] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:34:51] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:34:51] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:34:51] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-09-30 20:34:51] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 20:34:56] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:34:56] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 80
+[2021-09-30 20:35:05] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 20:35:07] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:35:17] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:35:20] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2021
+[2021-09-30 20:35:20] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 20:35:20] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3074
+[2021-09-30 20:36:27] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:36:35] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:36:38] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2026
+[2021-09-30 20:36:38] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 20:36:38] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3519
+[2021-09-30 20:37:04] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 20:37:06] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:37:08] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:37:08] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 60
+[2021-09-30 20:37:10] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:37:14] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2028
+[2021-09-30 20:37:14] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 20:37:14] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3025
+[2021-09-30 20:39:25] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:39:28] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-09-30 20:39:28] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 302 0
+[2021-09-30 20:39:28] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 20:39:28] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 20:39:30] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 20:39:30] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-09-30 20:39:30] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-09-30 20:39:30] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-09-30 20:39:30] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:39:30] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:39:30] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 20:39:30] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-09-30 20:39:30] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 20:39:33] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:39:36] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2028
+[2021-09-30 20:39:37] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 20:39:37] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3017
+[2021-09-30 20:40:20] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 20:40:22] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:40:44] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:40:44] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:40:45] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2024
+[2021-09-30 20:40:45] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 20:40:45] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 2891
+[2021-09-30 20:40:54] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 20:40:55] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:40:59] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 20:41:02] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2024
+[2021-09-30 20:41:02] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 20:41:02] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3262
+[2021-09-30 20:41:24] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 20:41:26] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 20:41:30] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\tasks.py changed, reloading.
+[2021-09-30 20:41:32] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:41:50] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:42:32] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:42:32] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 302 0
+[2021-09-30 22:42:32] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 22:42:32] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 22:42:33] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 22:42:33] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-09-30 22:42:33] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-09-30 22:42:33] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-09-30 22:42:33] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:42:33] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:42:33] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:42:33] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-09-30 22:42:33] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 22:42:38] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:42:38] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 60
+[2021-09-30 22:42:58] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:43:00] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2026
+[2021-09-30 22:43:00] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 22:43:01] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3241
+[2021-09-30 22:43:50] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:43:53] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:43:56] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2024
+[2021-09-30 22:43:56] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 22:43:56] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 2992
+[2021-09-30 22:44:02] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:44:04] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2028
+[2021-09-30 22:44:04] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 22:44:04] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3195
+[2021-09-30 22:46:00] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 22:46:02] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:47:25] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 22:47:27] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:47:54] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:48:31] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:49:36] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:49:45] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:49:45] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 302 0
+[2021-09-30 22:49:45] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 22:49:45] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 22:49:47] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 22:49:47] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-09-30 22:49:47] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-09-30 22:49:47] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-09-30 22:49:47] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:49:47] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:49:47] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 22:49:47] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:49:47] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-09-30 22:49:50] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:49:50] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2024
+[2021-09-30 22:49:51] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 22:49:51] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3409
+[2021-09-30 22:50:38] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:50:40] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:50:40] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2024
+[2021-09-30 22:50:40] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 22:50:40] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3289
+[2021-09-30 22:50:48] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:50:48] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2024
+[2021-09-30 22:50:49] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 22:50:49] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 2926
+[2021-09-30 22:50:53] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/images/hp.jpg
+[2021-09-30 22:50:53] basehttp.log_message INFO : "GET /student/images/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 22:50:53] basehttp.handle_error INFO : - Broken pipe from ('127.0.0.1', 11214)
+
+[2021-09-30 22:50:57] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:50:57] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2024
+[2021-09-30 22:50:57] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 22:50:57] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3576
+[2021-09-30 22:52:52] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 22:52:55] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:52:58] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:52:58] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 302 0
+[2021-09-30 22:52:58] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 22:52:58] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 22:53:00] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 22:53:00] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-09-30 22:53:00] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-09-30 22:53:00] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-09-30 22:53:00] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:53:00] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:53:00] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:53:00] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-09-30 22:53:00] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 22:53:04] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:53:04] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2024
+[2021-09-30 22:53:04] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 22:53:04] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3043
+[2021-09-30 22:54:12] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 22:54:15] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:54:25] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 22:54:27] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:55:02] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 22:55:04] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:55:08] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 22:55:10] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:55:19] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:55:19] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 302 0
+[2021-09-30 22:55:19] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 22:55:19] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 22:55:27] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 22:55:27] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 22:55:30] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 22:55:30] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-09-30 22:55:30] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-09-30 22:55:30] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-09-30 22:55:30] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:55:30] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:55:30] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:55:30] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-09-30 22:55:30] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 22:55:34] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:55:34] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2026
+[2021-09-30 22:55:34] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-09-30 22:55:35] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3622
+[2021-09-30 22:57:13] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 22:57:15] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:57:41] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 22:57:43] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 22:57:49] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:57:49] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 302 0
+[2021-09-30 22:57:49] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 22:57:49] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 22:57:53] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 22:57:53] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-09-30 22:57:53] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-09-30 22:57:53] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-09-30 22:57:53] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:57:53] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:57:53] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-09-30 22:57:53] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-09-30 22:57:53] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-09-30 22:57:56] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:58:01] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:58:03] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:58:05] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:58:21] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:58:21] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 60
+[2021-09-30 22:58:24] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:58:30] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:58:46] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 22:58:46] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 60
+[2021-09-30 22:59:34] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 22:59:37] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:00:29] autoreload.trigger_reload INFO : D:\django-project\djangoSample\mainapp\views.py changed, reloading.
+[2021-09-30 23:00:31] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:00:31] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-09-30 23:00:31] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 302 0
+[2021-09-30 23:00:31] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-09-30 23:00:31] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-09-30 23:00:37] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:00:37] basehttp.log_message INFO : "GET / HTTP/1.1" 200 64
+[2021-09-30 23:01:42] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\urls.py changed, reloading.
+[2021-09-30 23:01:44] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:01:44] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:01:44] basehttp.log_message INFO : "GET / HTTP/1.1" 200 475
+[2021-09-30 23:01:58] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:01:58] basehttp.log_message INFO : "GET / HTTP/1.1" 200 475
+[2021-09-30 23:02:13] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:02:13] basehttp.log_message INFO : "GET / HTTP/1.1" 200 475
+[2021-09-30 23:03:41] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\__init__.py changed, reloading.
+[2021-09-30 23:03:44] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:03:58] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:04:00] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:04:38] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:04:40] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:04:40] basehttp.log_message INFO : "GET / HTTP/1.1" 200 476
+[2021-09-30 23:06:38] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:06:40] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:07:26] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:07:26] basehttp.log_message INFO : "GET / HTTP/1.1" 200 475
+[2021-09-30 23:09:43] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:09:45] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:10:05] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:10:59] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:11:04] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:11:04] basehttp.log_message INFO : "GET / HTTP/1.1" 200 476
+[2021-09-30 23:11:23] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:11:25] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:11:26] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:11:26] basehttp.log_message INFO : "GET / HTTP/1.1" 200 476
+[2021-09-30 23:11:33] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:11:33] basehttp.log_message INFO : "GET / HTTP/1.1" 200 475
+[2021-09-30 23:11:49] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:11:51] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:12:12] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:12:12] basehttp.log_message INFO : "GET / HTTP/1.1" 200 475
+[2021-09-30 23:12:20] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:12:22] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:12:24] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:12:24] basehttp.log_message INFO : "GET / HTTP/1.1" 200 476
+[2021-09-30 23:12:39] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:12:41] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:13:09] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:13:11] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:13:13] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:13:13] basehttp.log_message INFO : "GET / HTTP/1.1" 200 475
+[2021-09-30 23:13:23] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:13:23] basehttp.log_message INFO : "GET / HTTP/1.1" 200 476
+[2021-09-30 23:13:39] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:13:41] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:14:42] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:14:44] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:14:50] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:14:50] basehttp.log_message INFO : "GET / HTTP/1.1" 200 476
+[2021-09-30 23:15:33] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:16:01] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:16:02] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:16:02] basehttp.log_message INFO : "GET / HTTP/1.1" 200 476
+[2021-09-30 23:16:23] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:17:01] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:17:03] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:17:03] basehttp.log_message INFO : "GET / HTTP/1.1" 200 475
+[2021-09-30 23:17:26] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:17:28] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:17:28] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:17:28] basehttp.log_message INFO : "GET / HTTP/1.1" 200 476
+[2021-09-30 23:21:12] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:21:14] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:21:37] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:21:39] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:21:46] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:21:46] basehttp.log_message INFO : "GET / HTTP/1.1" 200 476
+[2021-09-30 23:22:03] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:22:05] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:22:07] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:22:08] basehttp.log_message INFO : "GET / HTTP/1.1" 200 475
+[2021-09-30 23:22:27] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:22:28] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:26:15] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\celery.py changed, reloading.
+[2021-09-30 23:26:50] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:27:00] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:27:00] basehttp.log_message INFO : "GET / HTTP/1.1" 200 475
+[2021-09-30 23:44:45] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\settings.py changed, reloading.
+[2021-09-30 23:44:47] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:47:08] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\settings.py changed, reloading.
+[2021-09-30 23:47:10] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:49:45] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\settings.py changed, reloading.
+[2021-09-30 23:49:47] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:52:22] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\settings.py changed, reloading.
+[2021-09-30 23:52:24] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:52:54] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-09-30 23:52:54] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-09-30 23:52:55] basehttp.log_message INFO : "GET / HTTP/1.1" 200 476
+[2021-10-01 00:01:11] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\settings.py changed, reloading.
+[2021-10-01 00:01:13] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-10-01 00:01:43] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-10-01 00:01:44] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-10-01 00:01:44] basehttp.log_message INFO : "GET / HTTP/1.1" 200 475
+[2021-10-01 00:02:10] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\settings.py changed, reloading.
+[2021-10-01 00:02:12] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-10-01 00:20:35] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\settings.py changed, reloading.
+[2021-10-01 00:20:37] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-10-01 00:21:22] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-10-01 00:21:24] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/
+[2021-10-01 00:21:24] basehttp.log_message INFO : "GET / HTTP/1.1" 200 476
+[2021-10-01 00:21:29] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-10-01 00:21:29] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 302 0
+[2021-10-01 00:21:29] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-10-01 00:21:29] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-10-01 00:21:31] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-10-01 00:21:31] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-10-01 00:21:31] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-10-01 00:21:31] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-10-01 00:21:31] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-10-01 00:21:31] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-10-01 00:21:31] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-10-01 00:21:31] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-10-01 00:21:31] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-10-01 00:49:37] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-10-01 00:49:37] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 302 0
+[2021-10-01 00:49:37] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-10-01 00:49:37] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-10-01 00:49:39] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/favicon.ico
+[2021-10-01 00:49:39] basehttp.log_message INFO : "GET /favicon.ico HTTP/1.1" 302 0
+[2021-10-01 00:49:39] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-10-01 00:49:39] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-10-01 01:22:37] autoreload.trigger_reload INFO : D:\django-project\djangoSample\djangoSample\urls.py changed, reloading.
+[2021-10-01 01:22:39] autoreload.run_with_reloader INFO : Watching for file changes with StatReloader
+[2021-10-01 01:30:07] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-10-01 01:30:07] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-10-01 01:30:08] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/favicon.ico
+[2021-10-01 01:30:08] basehttp.log_message INFO : "GET /favicon.ico HTTP/1.1" 302 0
+[2021-10-01 01:30:08] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-10-01 01:30:08] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-10-01 01:30:14] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-10-01 01:30:14] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-10-01 01:30:14] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-10-01 01:30:14] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-10-01 01:30:14] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-10-01 01:30:14] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-10-01 01:30:15] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-10-01 01:30:15] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131
+[2021-10-01 01:30:15] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-10-01 01:30:15] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/favicon.ico
+[2021-10-01 01:30:15] log.log_response WARNING : Not Found: /favicon.ico
+[2021-10-01 01:30:15] basehttp.log_message WARNING : "GET /favicon.ico HTTP/1.1" 404 2450
+[2021-10-01 01:30:22] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-10-01 01:30:22] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 200 2024
+[2021-10-01 01:30:22] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/verification/
+[2021-10-01 01:30:22] basehttp.log_message INFO : "GET /student/verification/ HTTP/1.1" 200 3428
+[2021-10-01 01:32:58] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/list/
+[2021-10-01 01:32:58] basehttp.log_message INFO : "GET /student/list/ HTTP/1.1" 302 0
+[2021-10-01 01:32:58] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-10-01 01:32:58] basehttp.log_message INFO : "GET /student/login HTTP/1.1" 200 668
+[2021-10-01 01:32:59] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/login
+[2021-10-01 01:32:59] basehttp.log_message INFO : "POST /student/login HTTP/1.1" 302 0
+[2021-10-01 01:32:59] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/detail2
+[2021-10-01 01:32:59] basehttp.log_message INFO : "GET /student/detail2 HTTP/1.1" 200 1901
+[2021-10-01 01:33:00] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/media/storage/hp.jpg
+[2021-10-01 01:33:00] basehttp.log_message INFO : "GET /media/storage/hp.jpg HTTP/1.1" 200 154138
+[2021-10-01 01:33:00] check_login.process_request INFO : 127.0.0.1 visited http://127.0.0.1:8000/student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-10-01 01:33:00] log.log_response WARNING : Not Found: /student/127.0.0.1:8000/media/storage/hp.jpg
+[2021-10-01 01:33:00] basehttp.log_message WARNING : "GET /student/127.0.0.1:8000/media/storage/hp.jpg HTTP/1.1" 404 4131

@@ -4,6 +4,7 @@ import os
 import random
 import uuid
 from datetime import datetime, timedelta
+import time
 from io import BytesIO
 from pathlib import Path
 
@@ -21,10 +22,13 @@ from django.views import View
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
 
+import mainapp
 from mainapp.models import Student, House, Course
+from mainapp.tasks import hello_celery
 from util.helper import random_string
+from celery.signals import task_success, task_postrun
 
-cache.add('a','a')
+
 def student_list(request):
     students = [{'id': 1, 'name': "Harry Potter"}, {'id': 2, 'name': "Ronald Weasley"},
                 {'id': 3, 'name': "Hermione Granger"}]
@@ -65,6 +69,9 @@ def student_list3(request):  # http://127.0.0.1:8000/student/list   student from
     #template = loader.get_template('student/list.html')  # load template
     #html = template.render(context={'msg': 'Hogwarts student', 'students': students})   # render template
     html = loader.render_to_string("list.html", locals(), request)  #  request optional,  use app level template
+
+
+
     return HttpResponse(html, status=200)
 
 def delete_student(request):  # http://127.0.0.1:8000/student/delete?id=15
@@ -203,6 +210,8 @@ class LoginView(View):
 def detail2(request):  # retrieve url path parameter (not request.get)
     info = request.session.get('student')  # {"user": "Harry Potter", "id": 1}
     info2 = request.headers
+    mainapp.codeSignal.send('api', path=request.path, memo='detail is here %s' % info)
+    # sender name, keys values in side param list to send
     if info:
         info = eval(info)
         id = info.get('id')
@@ -217,3 +226,5 @@ def detail2(request):  # retrieve url path parameter (not request.get)
 
     else:
         return redirect('/student/list')
+
+
