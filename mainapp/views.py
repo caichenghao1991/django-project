@@ -140,13 +140,15 @@ def detail(request, id):  # retrieve url path parameter (not request.get)
     return render(request, 'detail.html', locals())
 
 def images(request, name):
-    path = os.path.join(os.getcwd(), 'media','storage',name)
-    with open(path, 'rb') as f:
-        img = f.read()
-    resp = HttpResponse(content=img) # , content_type='image/jpeg'
-    resp['Content-Type'] = 'image/jpeg'
-    resp.setdefault('Content-Length', len(img))  # update Content-Length in response headers
-                            # (chrome browser, network tab, click on img, under headers tab)
+    if name:
+        path = os.path.join(os.getcwd(), 'media','storage', name)
+
+        with open(path, 'rb') as f:
+            img = f.read()
+        resp = HttpResponse(content=img) # , content_type='image/jpeg'
+        resp['Content-Type'] = 'image/jpeg'
+        resp.setdefault('Content-Length', len(img))  # update Content-Length in response headers
+                                # (chrome browser, network tab, click on img, under headers tab)
     token = uuid.uuid4().hex
     resp.set_cookie('token', token, expires=datetime.now()+timedelta(minutes=2))
     # (chrome browser, network tab, click on img, under Cookie tab)
@@ -183,7 +185,7 @@ class LoginView(View):
             #print(student)
             if student and student.password == pwd:
                 request.session['student'] = json.dumps({'user': student.name, 'id': student.id})
-                request.session.set_expiry(100)  # 100 seconds
+                request.session.set_expiry(1000)  # 100 seconds
                 #print(request.session.get('student'))
                 #url =reverse('hogwarts:info', args=(student.id,))
                 url = '/student/detail2'
@@ -193,7 +195,7 @@ class LoginView(View):
                 #if not request.COOKIES.get('token'):
                 #    resp.set_cookie(key='token', value=uuid.uuid4().hex)
                 if not cache.has_key('student'):
-                    cache.add('student', json.dumps({'user': student.name, 'id': student.id}), timeout=100)
+                    cache.add('student', json.dumps({'user': student.name, 'id': student.id}), timeout=1000)
 
                 #print(cache.get('student'))
 
@@ -219,8 +221,9 @@ def detail2(request):  # retrieve url path parameter (not request.get)
         msg = 'Welcome %s' % student.name
         url = reverse('hogwarts:info', args=(id,))
         host = request.get_host()
-        path = student.logo.url.split('/')[-1]
-        pic_src = '../media/storage/'+path
+        if student.logo:
+            path = student.logo.url.split('/')[-1]
+            pic_src = '../media/storage/'+path
 
         return render(request, 'detail.html', locals())
 

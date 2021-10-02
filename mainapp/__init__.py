@@ -1,4 +1,3 @@
-from celery.signals import task_postrun, task_success
 from django.db.models.signals import pre_delete, post_delete
 from django.dispatch import receiver
 from django import dispatch
@@ -29,4 +28,5 @@ def model_delete_post(sender, **kwargs):
 
 
 codeSignal = dispatch.Signal(providing_args=['path', 'memo'])   # declare keys param list sending inside signal
+
 

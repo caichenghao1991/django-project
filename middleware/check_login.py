@@ -28,7 +28,9 @@ class CheckLoginMiddleWare(MiddlewareMixin):
         #print('---CheckLoginMiddleWare---', 'process response')
         return response
 
+    '''
     def process_exception(self, request, exception):
         #print('---CheckLoginMiddleWare---', 'process exception')
         print(exception)
         return HttpResponse('Something went wrong: %s' % exception)
+    '''
