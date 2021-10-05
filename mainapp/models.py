@@ -11,6 +11,7 @@ from django.db import models
 # Create your models here.
 class House(models.Model):
     name = models.CharField(max_length=30, verbose_name='House Name')
+    # default house.student_set.all() get all student in current house object, unless use related_name in many side
 
     def __str__(self):  # add this so in the admin page, will show student name instead of object
         return self.name
@@ -32,7 +33,8 @@ class Student(models.Model):
     age = models.IntegerField(default=0, blank=True, null=True, validators=[StudentValidator.valid_age])
     # admin page(blank=True) / database (null=True) add studentcan be empty
     # house = models.IntegerField(default=0, blank=True, null=True)
-    house = models.ForeignKey(House, on_delete=models.SET_NULL, null=True, db_index=True)  # CASCADE create index
+    house = models.ForeignKey(House, on_delete=models.SET_NULL, null=True, db_index=True, related_name='students')
+        # CASCADE create index, change access in house table from student_set to students
     # id = models.UUIDField(primary_key=True, unique=True)
     # gender = models.IntegerField(choices=((0, 'male'),(1, 'female')), db_column='sex')
     # save 0/1 column name sex, but display male/female in admin page

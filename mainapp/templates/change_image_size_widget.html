@@ -1,0 +1,13 @@
+<input id="cust" type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}"{% endif %}{% include "django/forms/widgets/attrs.html" %}>
+<p id="img_msg" onclick="changeImageSize(0)" > change size</p>
+<script>
+    function changeImageSize(dim){
+        let size = document.getElementById('cust').value
+        let arr = window.location.pathname.split('/')
+        let id = arr[arr.length-3]
+
+        fetch('/../../../../../student/change_image_size/'+id+'/'+size).then(resp=>resp.json()).then(data=>{console.log(data.size);
+            document.getElementById('img_msg').innerHTML = document.getElementById('img_msg').innerHTML+'&emsp;&emsp;'+data.msg
+            })
+    }
+</script>

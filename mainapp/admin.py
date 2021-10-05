@@ -1,4 +1,6 @@
 from django.contrib import admin
+
+from mainapp.form import StudentForm
 from mainapp.models import House, Student, Course
 
 
@@ -16,6 +18,7 @@ class StudentAdmin(admin.ModelAdmin):
         return obj.house.name
 
     house_str.short_description = 'house name'  # change admin display name
+    form = StudentForm
 
 class HouseAdmin(admin.ModelAdmin):
     # change the display of student in the admin page

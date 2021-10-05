@@ -4,15 +4,18 @@ import os
 import random
 import uuid
 from datetime import datetime, timedelta
+
+import django
 import time
 from io import BytesIO
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
+from django.contrib.auth.models import AnonymousUser, User
 from django.core.cache import cache
 from django.core.paginator import Paginator
 from django.db.models import F, Q
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -21,13 +24,21 @@ from django.urls import reverse
 from django.views import View
 from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework import permissions, status
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
+from rest_framework.authtoken.models import Token
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 import mainapp
+from mainapp.api.students_api import StudentModelSerializer
 from mainapp.models import Student, House, Course
 from mainapp.tasks import hello_celery
 from util.helper import random_string
 from celery.signals import task_success, task_postrun
-
+from django.core.mail import send_mail
 
 def student_list(request):
     students = [{'id': 1, 'name': "Harry Potter"}, {'id': 2, 'name': "Ronald Weasley"},
@@ -134,8 +145,9 @@ def detail(request, id):  # retrieve url path parameter (not request.get)
         student = Student.objects.get(pk=id)
         url = reverse('hogwarts:info', args=(id,))
         host = request.get_host()
-        path = student.logo.url.split('/')[-1]
-        pic_src = '../media/storage/'+path
+        if student.logo:
+            path = student.logo.url.split('/')[-1]
+            pic_src = '../media/storage/'+path
         #print(url)
     return render(request, 'detail.html', locals())
 
@@ -230,4 +242,71 @@ def detail2(request):  # retrieve url path parameter (not request.get)
     else:
         return redirect('/student/list')
 
+def change_image_size(request, id, size):
+    student = Student.objects.get(pk=int(id))
+    width = int(size)
+    height = int(int(student.logo_height) * int(size) / int(student.logo_width))
+    student.logo_width = width
+    student.logo_height = height
+    student.save()
+    img = Image.open(os.path.join(os.getcwd(), *student.logo.url.split('/')))
+    out = img.resize((width, height),Image.ANTIALIAS)
+    out.save(os.path.join(os.getcwd(),*student.logo.url.split('/')))
+    return JsonResponse({"size": int(size), "msg": "size successfully changed"})
+
+@csrf_exempt
+def send_student_email(request, code):
+    email = request.POST.get('email')
+    if str(code) == '0':
+        title, msg = 'Student forget and change password', ''
+        html ='<html> Dear student, please change your password <a href="https://www.baidu.com">here</a>'
+        send_mail(title, msg, from_email='caichenghao11@gmail.com', html_message=html, recipient_list=[email])
+        print('email sent')
+        return HttpResponse('Email successfully sent. Please check your email %s' % email)
+
+
+@api_view(['GET']) # ,'POST'
+@permission_classes((permissions.AllowAny,))
+def student_list_api(request):
+
+    if request.method == 'GET':
+        data = Student.objects.all()
+        serializer = StudentModelSerializer(data, many=True)
+        return Response(serializer.data)
+
+
+class StudentAPIView(APIView):
+    authentication_classes = (TokenAuthentication,)  #SessionAuthentication, BasicAuthentication
+        # this will also include authentication in settings.py
+    permission_classes = (IsAuthenticated,)
+
+
+    def get(self, request, id):
+        user = User.objects.filter(username=request.user)
+        if request.user is not AnonymousUser:
+            token = Token.objects.get_or_create(user=user.first())
+            request.session['token'] = token # b1694f8ec22c3a5749b221cf8993cf8cc83c9880
+
+
+        student = Student.objects.get(pk=id)
+        serializer = StudentModelSerializer(student)  # instance=self.student
+        return Response(serializer.data)
+
+
+    def put(self, request, **kwargs):
+        id = kwargs['id']
+        student = Student.objects.get(pk=id)
+        serializer = StudentModelSerializer(student, request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data,status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def delete(self, request, **kwargs):
+        id = kwargs['id']
+        student = Student.objects.get(pk=id)
+        student.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 

@@ -19,6 +19,8 @@
     <p>{{ student.intro }}</p>
     <input type="hidden" id='logo' value={{ student.logo }}></input>
     <input type="hidden" id='host' value={{ host }}></input>
+    <button onclick="ajax_get()">get data</button>
+    <p id="data"></p>
 {% endblock %}
 {% block js%}
 <script>
@@ -27,6 +29,17 @@
     var src = host+'/media/'+document.querySelector('input[type="hidden"]').value
     $('img')[0].src = src
 
+    function ajax_get(){
+        fetch('/student/student_api/1',{
+            headers:{
+                'Authorization': 'Token b1694f8ec22c3a5749b221cf8993cf8cc83c9880'
+            }
+        }).then(resp=>resp.json())
+            .then(data=>{
+                data =JSON.stringify(data)
+                document.getElementById('data').innerHTML= data
+            })
+    }
 
 </script>
 

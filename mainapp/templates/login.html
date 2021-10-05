@@ -10,5 +10,8 @@
     <p>Password: <input type="password" name="password" placeholder="Enter password" required></p>
      <p><button>submit</button></p>
  </form>
-<input type="button" value="Sign up"></p>
+<p><input type="button" value="Sign up"></p>
+ <form action="/student/send_email/0" method="post" >
+     <p>Recovery Email:<input type="email" name="email" maxlength="30" size="30" required>
+         Send password recovery email:<button>send</button></form>
 {% endblock %}
