@@ -72,7 +72,7 @@
     html:
        <a href="{% url 'hogwarts:info' stu.id %}">More info</a>
        <a href="{% url 'hogwarts:info' id='stu.id' %}">More info</a> #  specify parameter
-        # can have multiple parameter seperated by space
+        # can have multiple parameter separated by space
 
     views:
         sid = id
@@ -124,7 +124,11 @@
 
         class Meta:
             db_table = 't_student'  # set projected table name
-
+            db_table = 't_student'
+            verbose_name = 'student'  # name inside admin page
+            verbose_name_plural = 'student'  # set plural name (default add s)
+            ordering = ['age']  # default ascending, ['-age'] descending
+            unique_together = ('name', 'age', 'house')
 
     views.py
     def student_list2(request):  # http://127.0.0.1:8000/student/list
@@ -174,6 +178,7 @@
         list_display = ('id','name')
         list_per_page = 10  # count of student per page in the admin page
         list_filter = ('age','house')  # admin page add option filter student by age, or by house
+        search_fields = ('id', 'name')  # admin page search student by id or name
         # fields = ('name',)  # specify the admin page field required during add, can exclude some field
     admin.site.register(Student, StudentAdmin))  # admin.site.register(Student)
 
@@ -188,28 +193,31 @@
     constraint: max_length, default, unique, primary_key, null, blank, db_index, db_column, verbose_name, choice
 
     meta: db_table (declare table name), ordering, verbose_name, verbose_name_plural, unique_together,
-        abstract(qon't create table)
+        abstract(don't create table)
 
     template html same as flask
     {% for item in items %} {% endfor %}
     {% if items>0 %} {% endif %}
-    {{ varable }}
-    {% block name %} {% endblock %}  # name is the block name
+    {{ variable }}
     {% block name %} {% endblock %}  # name is the block name
     {% extends "base.html" %}
+    {% include 'base_js.html' %}  # include page can't modify
     return render(request, 'student/list.html', locals())
 
     type class which create the model class will default create a django.db.Manager class object assign to objects.
         Manager is subclass of QuerySet class (mode, db, query, filter, fields, lookup, iterable)
         objects must be a Manager class object
+
     objects functions:
-        QuerySet: filter, exclude       gt, lt, gte, lte, exact, iexact, contains, icontains, in, isnull, isnotnull
+        QuerySet: filter, exclude
+            condition: gt, lt, gte, lte, exact, iexact(ignore case), contains, icontains, in, isnull, isnotnull
         join_date__year__gt=2021  # year, month, dat, hour, minute, second
         students = Student.objects.filter(age__gt=10,name__contains='Har').exclude(age__gt=20).all()
             .order_by('-id', 'age')
         # can chain filters and exclude  (10,20], filter can have multiple conditions
-        Student.objects.filter(id__range=(1,100)).only('name','age')   # use only to get specified row
+        Student.objects.filter(id__range=(1,100)).only('name','age')   # use only to get specified column
             # defer('birth')  # get all columns except 'birth'
+
 
         Single Object: get() last()  first()  # return an object
         Other: exists():boolean check result exists    count()      order_by()
@@ -218,7 +226,7 @@
              all()   return queryset, but iterative item is object
 
         use built in function instead of mix of python function, ORM data transfer through TCP from database, do all
-        calculation at database side to minimize the data transfered
+            calculation at database side to minimize the data transferred
 
         Aggregate
         from django.db.models import Count, Avg, Min, Max, Sum
@@ -265,21 +273,24 @@
             connection.commit()
 
 
-    class BaseModel(models.Model):
-        name = models.CharField(max_length=50)
-        class Meta:
-            abstract = True
-    class Student(BaseModel):  # extend BaseModel,
-        objects=StudentManager()
-        class StudentManager(models.Manager):  # custom queryset, do pre-filter job
-            def get_queryset(self):
-                return super().get_queryset().filter(~Q(house_id=''))
-                    # filter out student don't belong to any house
-            def update(self.**kwargs):
-                password = kwargs.get('password',None)
-                if password and len(password) < 30:
-                    kwargs['password']=make_password(pass_word)
-                return super().update(**kwargs)
+    custom model manager and parent class extension
+        class BaseModel(models.Model):
+            name = models.CharField(max_length=50)
+            class Meta:
+                abstract = True
+        class Student(BaseModel):  # extend BaseModel,
+            class StudentManager(models.Manager):  # custom queryset, do pre-filter job
+                def get_queryset(self):
+                    return super().get_queryset().filter(~Q(house_id=''))
+                        # filter out student don't belong to any house
+                def update(self, **kwargs):
+                    password = kwargs.get('password',None)
+                    if password and len(password) < 30:
+                        kwargs['password']=make_password(pass_word)
+                    return super().update(**kwargs)
+            objects=StudentManager()
+                # objects=models.Manager()  default implicit call default manager to manage Student.objects
+        Students.objects.get(pk=1).update(name='Harry')   # call custom update in StudentManager
 
     Relation
         one to one:
@@ -294,7 +305,7 @@
             @cached_property
             def Person(self):
                 if not hasattr(self,'_person'):    # lazy loading
-                    self._house = Person.objects.get(id=self.id)
+                    self._person = Person.objects.get(id=self.id)
                 return self._person   # for one to one relationship
 
         # many to one
@@ -443,7 +454,7 @@
         file under migrations folder after the deleted table change. Then makemigrations & migrate
 
         or use ModelForm class for validation
-            common validation item: required, min_length, diabled
+            common validation item: required, min_length, disabled
         admin.py  class StudentAdmin(admin.ModelAdmin):  add
             form = StudentForm
 
@@ -495,11 +506,12 @@
     pagination
         from django.core.paginator import Paginator
         data = Student.objects.all()
-        for i in paginator.page_range:   # page_range generator for page number
+        p = Paginator(data, 10)  # 10 pages
+        for i in p.page_range:   # page_range generator for page number
             print([j for j in paginator.page(i)])  # paginator.page(i) return a Page object for page i
         Page object functions used for html template:
-            page_num (current page)  object_list (list of data in current page)   hax_next   has_previous  next_page_number
-            previous_page_number   len() (current page data count)
+            page_num (current page number)  page(current page object) object_list (list of data in current page)
+            has_next   has_previous  next_page_number   previous_page_number   len() (current page data count)
 
         view
         page=request.GET.get('page',1)  students = Student.objects.all()
@@ -675,7 +687,7 @@
                 pattern_name = 'hogwarts:query'
                 query_string = True  # confirm whether have request param in the url
                 def get_redirect_url(self, *args, **kwargs):  # override parent (optional)
-                    return super(QueryView, self). get_redirect_url(*args,**kwargs)
+                    return super(QueryView, self).get_redirect_url(*args,**kwargs)
 
     middleware
          aop(add functionality before and after function/request, and will not affect original code)
@@ -726,7 +738,7 @@
 
         class StudentError(Exception): # declare specific exception easier for trace source
             pass
-        raise StudentError('wrong student')  # raise exception
+        raise StudentError('wrong student')  # raise exception in code
 
 
     logging
@@ -744,7 +756,7 @@
                      'datefmt': '%Y-%m-%d %H:%M:%S'
                  }
              },
-            # handlers：用来定义具体处理日志的方式，可以定义多种，"default"就是默认方式，"console"就是打印到控制台方式。file是写入到文件的方式，注意使用的class不同
+            # handlers：
              'handlers': {  # declare logging handler for different need (io, console output, email, default...)
                  'mail_admins':{
                      'level': 'ERROR',
@@ -836,8 +848,8 @@
         or cache.set()/add(html)  at middleware:  process request() check cache and return if exist,
             process_response() add cache
 
-        @cache_page(timeout=5, cache='html_cache',key_prefix='cc')  # cache name and prefix  timeout count refresh page
-
+        @cache_page(timeout=5, cache='html_cache',key_prefix='site1')  # cache name and prefix  timeout count refresh
+            # page, cache default use 'default' cache
 
         redis cache
         pip install django-redis
@@ -919,7 +931,7 @@
         RabbitMQ, MongoDB,)
 
         Celery class assignment and control execution
-        broker(queue) send task message to many workers, and collect execeution result
+        broker(queue) send task message to many workers, and collect execution result
         worker (backend process) handle task execution
 
     pip install celery eventlet          django-redis flower (gui optional)
@@ -945,7 +957,7 @@
         import os
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangoSample.settings")   # use project name
         app = Celery('hogwartsCelery', broker='redis://127.0.0.1:6379/2')  # backend='redis:127.0.0.1:6279/2'
-            # app = Celery('hogwartsCelery') add broker in settings
+            # app = Celery('hogwartsCelery') add broker config in settings
         app.config_from_object("django.conf:settings") # specify the settings file name for celery settings.py
         # app.conf.timezone = "Asia/Shanghai"
         app.autodiscover_tasks()  # auto discover task
@@ -956,7 +968,7 @@
         from .celery import app as celery_app
         __all__ = ('celery_app',)   # add celery_app object inside project
 
-    mainapp  add tasks.py  # default name is taks.py
+    mainapp  add tasks.py  # default name is tasks.py
         from celery import shared_task
         import time
         @shared_task
@@ -968,6 +980,8 @@
         def add(a, b):
             time.sleep(2)
             return a+b
+        add.delay(2,3) to call task
+
         @after_task_publish.connect(sender = 'mainapp.tasks.hello_celery')
         def task_sent_handler(sender=None, headers=None, body=None, **kwargs):
             print(sender)
@@ -975,8 +989,8 @@
             @before_task_publish,  @after_task_publish, @task_prerun, @task_postrun, @task_success,
             @task_failure, @task_revoked
 
-        def async_celery(func):  # define decorator
-            task = app.task(func)    # same as @app.task
+        def async_celery(func):  # define decorator similar to @app.task, but no need delay
+            task = app.task(func)
             return task.delay
 
         @async_celery
@@ -1046,6 +1060,15 @@
         api_router.register('students', StudentAPIView)
         #api_router.register('houses', StudentAPIView)  # if use HyperlinkedModelSerializer
 
+    or urls.py
+        urlpatterns = [
+            path('admin/', admin.site.urls),
+            path('api/', include('mainapp.urls')),
+        ]
+    mainapp.urls.py
+        urlpatterns = [
+            path('student/', StudentAPIView.as_view()),
+        ]
     mainapp.api.student_api
         from rest_framework import serializers, viewsets
         from mainapp.models import Student, House
@@ -1076,12 +1099,15 @@
     or use serializers.HyperlinkedModelSerializer  need view for both class if relationship
             "house": "http://localhost:8000/api/houses/1/",
         class HouseModelSerializer(serializers.HyperlinkedModelSerializer):
+            age = serializers.IntegerField(required=False, default=10)  # add field need serialize
             # Relation serializing ways:
             #students = serializers.StringRelatedField(many=True)  # change from hyperlink/id to string object
             #students = serializers.PrimaryKeyRelatedField(many=True)  # change from hyperlink to id
             # serializers.HyperlinkedRelatedField default for HyperlinkedModelSerializer
             students = serializers.SlugRelatedField(many=True,queryset=Student.objects.all(), slug_field='name')
                 # must add read_only=True or provide `queryset` argument
+            students = serializers.ManyRelatedField(serializers.SlugRelatedField(slug_field="username", source="user_id"),
+                                             queryset=User.objects.all(), source="follow")
             # change from hyperlink to interested field (slug_field),
             class Meta:
                 model = Student
@@ -1095,12 +1121,12 @@
         StudentModelSerializer input parameter: data, instance, context, partial, many
 
         dic_org = StudentModelSerializer(student).data   # return OrderedDict,  param student object
-        content = JSONRender().render()  # return json string
+        content = JSONRenderer().render(dic_org)  # return bytestring  # dict => string
         buffer = BytesIO(content) # byte stream
         dic = JSONParser().parse(buffer)  # return Dict
 
         parse post request data, save object
-            data = JSONParser().parse(request)
+            data = JSONParser().parse(request)  # byte => dict
             serializer = StudentModelSerializer(data=data)
             serializer.save  # save object with OrderedDict serializer
 
@@ -1126,6 +1152,8 @@
                 id = kwargs['id']
                 student = Student.objects.get(pk=id)
                 serializer = StudentModelSerializer(student)  # instance=self.student
+                if serializer.is_valid():
+                    seruakuzer.save()
                 return Response(serializer.data)
 
             @permission_classes((permissions.AllowAny,))
@@ -1177,14 +1205,15 @@
             # this will also include authentication in settings.py
             permission_classes = (IsAuthenticated,)
 
-        or instead of generate token via manage.py, write inside view.py
+        or instead of generate token via manage.py, write inside views.py
         from django.contrib.auth.models import AnonymousUser, User
         from rest_framework.authtoken.models import Token
-        def get(self, request, id):
-            user = User.objects.filter(username=request.user)   # django model user
-            if request.user is not AnonymousUser:
-                token = Token.objects.get_or_create(user=user.first())
-                request.session['token'] = token
+        class StudentAPIView(APIView):
+            def get(self, request, id):
+                user = User.objects.filter(username=request.user)   # django model user
+                if request.user is not AnonymousUser:
+                    token = Token.objects.get_or_create(user=user.first())
+                    request.session['token'] = token
 
 
         Create own Authentication
@@ -1193,6 +1222,9 @@
                             token = request.query_params.get('token') ...
             add MyAuthentication inside authentication_classes in class view or global settings.py
             add generate token logic inside view function
+
+    run curl to get json response
+    curl -X POST -H "Content-Type: application/json" http://127.0.0.1:8000/api/Student/ -d "{\"student_name\":\"Harry\"}"
 
     django send email
         settings.py
@@ -1273,24 +1305,7 @@
         # RPS 5000 RPS  if has database operation:300 RPS single db
         gunicon-config.py        # check official site for more config info
             from multiprocessing import cpu_count
-            bind = ["127.0.0.1:9000"]  # use internal ip(gunicorn don't have strong defense against hacker).
-                                       # 127.0.0.1 only accessible by this computer
-            daemon = True              # daemon backend process, only exit when system shutdown
-            pidfile = 'logs/gunicorn.pid'   # save id in file
 
-            workers = cpu_count()*2   # count of process,  have 1 master(manage workers), and many workers
-            worker_class = 'gevent'    # assign async task lib
-            worker_connections = 65535   # max connections for worker
-
-            keepalive = 60             # keep tcp connection for 60 sec instead of break connection immediately,
-                                       # avoid frequently 3 handshake
-            timeout = 30               # request time out if hasn't finish in 30 sec
-            graceful_timeout = 10      # restart timeout
-            forwarded_allow_ips = '*'  # allowed visitor ip
-
-            capture_output = True
-            loglevel = 'info'
-            errorlog = 'logs/error.log '
 
         start gunicorn
             gunicorn -c djangoSample/gunicon-config.py djangoSample.wsgi
