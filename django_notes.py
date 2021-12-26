@@ -1,6 +1,7 @@
 '''
+    Django is a high-level python web framework encourage rapid development and clean pragmatic design, not a webserver
     Django too heavy for handling api (mainly use flask/tornado), django is good for backend managing
-        system。
+        system
     django-admin help startproject   check helper function
     django-admin startproject djangoSample  # projectName
         # django-admin startproject django-project ./  # no extra layer directory if same project name and already
@@ -23,6 +24,7 @@
     ./manage.py shell             # test some code with django environment
 
     django-admin startapp mainapp
+    python manage.py startapp mainapp
         # one django project contain many app (module), register app into the main project settings.py
 
     django-admin startapp mainapp  # this will create a folder named mainapp, with empty structure files
@@ -87,8 +89,14 @@
 
     python manage.py makemigrations  # generate migration file, do not delete migration file
     python manage.py migrate   # migrate database
+        # python manage.py migrate mainapp 1   # migrate only specified app and provide migrate number
+    python manage.py showmigrations    [x]  migrated  [ ]  not yet migrated
+
+    python manage.py shell   # open shell
+        >>> from mainapp.models import Student
 
     # Create your models here.
+    from django.db import models
     class Student(models.Model):  # default create autoincrement primary key id
         name = models.CharField(max_length=50, verbose_name='Student Name')  # verbose name for admin page
         age = models.IntegerField(default=0)   # if empty no default will raise error
@@ -134,7 +142,8 @@
     def student_list2(request):  # http://127.0.0.1:8000/student/list
         request.method == 'GET':
         students = Student.objects.all()  # get all objects from t_student table
-        student = Student.objects.get(pk=1)  # search object by primary key=1
+        student = Student.objects.get(pk=1)  # search object by primary key=1   or get(id=1)
+            # get(name='Harry')  exception if more than one item, or no item exist
         Student.objects.get(pk=1).update(name='Jr'+F('name'))
         student.delete()   # delete object in database
         msg = 'Hogwarts student'
@@ -181,7 +190,7 @@
         search_fields = ('id', 'name')  # admin page search student by id or name
         # fields = ('name',)  # specify the admin page field required during add, can exclude some field
     admin.site.register(Student, StudentAdmin))  # admin.site.register(Student)
-
+        # or add @admin.register(Student) in front of class StudentAdmin(admin.ModelAdmin):
     data type
     CharField: string      IntegerField: int    BooleanFeild: 0/1 in database     NullBooleanField: nullable boolean
     AutoField: int autoincrement need add primary-key=True, auto_create # create column automatically
@@ -1067,7 +1076,13 @@
         ]
     mainapp.urls.py
         urlpatterns = [
-            path('student/', StudentAPIView.as_view()),
+            path('student/', StudentAPIView.as_view()),   # APIView
+            url('student/', StudentAPIView.as_view({   # ModelViewSet
+                'get': 'retrieve',
+                'put': 'update',
+                'patch': 'partial_update',
+                'delete': 'destroy'
+            }),name="student_detail"),
         ]
     mainapp.api.student_api
         from rest_framework import serializers, viewsets
@@ -1153,7 +1168,7 @@
                 student = Student.objects.get(pk=id)
                 serializer = StudentModelSerializer(student)  # instance=self.student
                 if serializer.is_valid():
-                    seruakuzer.save()
+                    serializer.save()
                 return Response(serializer.data)
 
             @permission_classes((permissions.AllowAny,))
