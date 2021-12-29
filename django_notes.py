@@ -869,12 +869,12 @@
         cache.get('student')  # {"user": "Harry Potter", "id": 1}
             # redis key is :1:student  for use db 1
 
-        # store session in redis
+        # store session in redis, need config redis CACHE first
         SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-        SESSION_COOKIE_NAME = 'SESSION_ID'
-        SESSION_COOKIE_PATH = '/'
-        SESSION_CACHE_ALIAS = 'default'
-        SESSION_COOKIE_AGE = 1209600
+        #SESSION_COOKIE_NAME = 'SESSION_ID'
+        #SESSION_COOKIE_PATH = '/'
+        SESSION_CACHE_ALIAS = 'default'   # change to redis cache (default is set to redis in CACHES)
+        SESSION_COOKIE_AGE = 1209600   # in seconds
 
 
         # rewrite orm operation
@@ -1066,7 +1066,7 @@
         from rest_framework import routers
         from mainapp.api.students_api import StudentAPIView
         api_router = routers.DefaultRouter()
-        api_router.register('students', StudentAPIView)
+        api_router.register('students', StudentAPIView)  #ViewSet
         #api_router.register('houses', StudentAPIView)  # if use HyperlinkedModelSerializer
 
     or urls.py
@@ -1074,10 +1074,15 @@
             path('admin/', admin.site.urls),
             path('api/', include('mainapp.urls')),
         ]
+
+    APIView: HTTP method: GET, POST, PUT, PATCH, DELETE
+    ViewSet: CRUD operation: LIST, CREATE, RETRIEVE, UPDATE, DESTROY, usually use router generate url
+
     mainapp.urls.py
         urlpatterns = [
-            path('student/', StudentAPIView.as_view()),   # APIView
-            url('student/', StudentAPIView.as_view({   # ModelViewSet
+            path('student/', StudentAPIView.as_view(), name='student'),   # APIView, no need specify mapping
+            path('student/<int:pk>/', StudentAPIView.as_view(), name='student-detail'),
+            url('student/', StudentAPIView.as_view({   # ViewSet (not recommended), use router instead
                 'get': 'retrieve',
                 'put': 'update',
                 'patch': 'partial_update',
@@ -1107,7 +1112,7 @@
             #     student = Student.objects.create(**validated_data)
             #     return student
 
-        class StudentAPIView(viewsets.ModelViewSet):
+        class StudentAPIView(viewsets.ModelViewSet):   #
             queryset = Student.objects.all()
             serializer_class = StudentModelSerializer
 
