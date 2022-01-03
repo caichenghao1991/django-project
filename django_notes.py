@@ -1011,7 +1011,7 @@
     start celery
         python manage.py migrate django_celery_results    # generate result table
         celery -A djangoSample worker -P gevent  -l info      # -P Coroutines (for windows)    -l log
-            # eventlet not working   use solo / gevent
+            # eventlet not working   use solo / gevent    -A task   create worker
         hello_celery.delay('Harry')  # call async task
         add.delay(2,3)  # call async task
     res = hello_celery.delay(1, 2)  # calling tasks
