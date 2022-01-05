@@ -241,6 +241,9 @@
         from django.db.models import Count, Avg, Min, Max, Sum
         aggregate return dict
         Student.objects.aggregate(Count('age'), max=Max('age'))  # add var=Max() change display name on page
+            # {'age_count':10, 'max':12}
+        Student.objects.annotate(Count('courses')).filter(age__gt=1)   # return student queryset with extra
+            # courses_count  column
 
         update on QuerySet object
         Student.objects.filter(id__gte=3).update(intro='Hi')
