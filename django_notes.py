@@ -199,7 +199,7 @@
     auto_now_add: create time, YYYY-MM-DD. auto_now and auto_now_add can't use together)
     DateTimeField (datetime.datetime, YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ])          TimeField
 
-    constraint: max_length, default, unique, primary_key, null, blank, db_index, db_column, verbose_name, choice
+    constraint: max_length, default, unique, primary_key, null, blank, db_index, db_column, verbose_name, choices
 
     meta: db_table (declare table name), ordering, verbose_name, verbose_name_plural, unique_together,
         abstract(don't create table)
@@ -477,7 +477,7 @@
                 password = forms.CharField(widget=forms.PasswordInput, label='Password', min_length=3,
                     error_messages={'required': "Password can't be empty",
                     'min_length': "Password should have more than 3 characters"})
-                tag = ChoiceField(choices=(('py','python'),('dj','django'))  # python in front end py in db
+                tag = forms.ChoiceField(choices=(('py','python'),('dj','django'))  # python in front end py in db
                 class Meta:
                     model = Student
                     fields = '__all__'
@@ -668,6 +668,7 @@
             class-based view (CBV): based on OOP, extension, override property. extend view, use dispatch internally
 
         class-based view CBV:
+            from django.views import View
             many classes: View, TemplateView, RedirectView, ListView, EditView, FormView, DetailView, DeleteView
             pass in url parameter inside function *args **kwargs
                 urls: path('login/<name>',LoginView.as_view())
@@ -693,14 +694,17 @@
                     id = context.get('id', 0)
                     context['data'] = ['a'] if id !=0 else ['b']  #  html {{ for i in data }}
                     return context
+                # dispatch() http_method_not_allowed()
 
             class QueryView(RedirectView):  # load template, only for get method
                 url  #redirect url or pattern
                 pattern_name = 'hogwarts:query'
                 query_string = True  # confirm whether have request param in the url
                 def get_redirect_url(self, *args, **kwargs):  # override parent (optional)
+                    student = get_object_or_404(Student, pk=kwargs['pk'])
+                    student.update_counter()
                     return super(QueryView, self).get_redirect_url(*args,**kwargs)
-
+                # dispatch() http_method_not_allowed()
     middleware
          aop(add functionality before and after function/request, and will not affect original code)
             add additional code dynamically, similar to decorator. Used for session, csrf, authorization, ip black/white
