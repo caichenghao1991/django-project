@@ -1156,6 +1156,8 @@
             data = JSONParser().parse(request)  # byte => dict
             serializer = StudentModelSerializer(data=data)
             serializer.save  # save object with OrderedDict serializer
+            serializer.is_valid()
+            serializer.data
 
     Restframework request, response
         request.POST  # only get form data in 'POST' method
