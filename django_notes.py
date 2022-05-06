@@ -38,6 +38,10 @@
              MEDIA_URL = '/media/'
              MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
              STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+        STATIC_ROOT, STATIC_URL and STATICFILES_DIRS are all used to serve the static files required for the website or
+            application. Whereas, MEDIA_URL and MEDIA_ROOT are used to serve the media files uploaded by a user.
+
         urls.py    # main urls
         def index(request: HttpRequest):    # views controller, must have http request param from browser
             return HttpResponse('<h1>hi, Django</h1>'.encode('utf-8'))   # or string
