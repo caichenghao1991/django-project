@@ -1,4 +1,4 @@
-'''
+v'''
     Django is a high-level python web framework encourage rapid development and clean pragmatic design, not a webserver
     Django too heavy for handling api (mainly use flask/tornado), django is good for backend managing
         system
